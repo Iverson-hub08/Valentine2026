@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YAY!</title>
+  <link rel="stylesheet" href="yes.css" />
+</head>
+<body>
+
+  <div class="side-cat left">
+    <img src="yay-cat.gif" alt="yay cat">
+  </div>
+
+  <div class="side-cat right">
+    <img src="yapapa-cat.gif" alt="yapapa cat">
+    </div>
+  
+    <div class="hearts-container"></div>
+
+  <div class="container">
+    <h1>💖 YAYYY!! 💖</h1>
+    <p>Yay another valentine year with ashlie again 💖 </p>
+
+    <!-- Replace rose with catflower -->
+    <div class="catflower">
+      <img src="Catflower.gif" alt="cat holding flower">
+    </div>
+
+    <p class="msg">I LOVE YOU first of all at thank you sa lahat ng ginawa mo sakin. 💕</p>
+    <p class="msg">I promise na ikaw lang ang aking mamahalin. I love you so much</p>
+
+    <a href="index.html" class="back">⬅ Back</a>
+  </div>
+<script>
+const heartsContainer = document.querySelector('.hearts-container');
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.innerText = '❤️';
+
+  // Random position
+  heart.style.left = Math.random() * window.innerWidth + 'px';
+  heart.style.top = window.innerHeight + 'px';
+
+  // Random size
+  heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+
+  heartsContainer.appendChild(heart);
+
+  // Remove heart after animation
+  heart.addEventListener('animationend', () => heart.remove());
+}
+
+// Create a heart every 300ms
+const heartInterval = setInterval(createHeart, 300);
+
+// Optional: Stop hearts when clicking "Yes"
+const yesButton = document.querySelector('.yes-button'); // if you have a Yes button
+if (yesButton) {
+  yesButton.addEventListener('click', () => {
+    clearInterval(heartInterval);
+    document.querySelectorAll('.heart').forEach(h => h.remove());
+  });
+}
+</script>
+</body>
+</html>

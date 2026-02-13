@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #000000, #ff4d88);
+  text-align: center;
+  position: relative; /* allow absolute positioning of GIFs */
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  width: 500px;
+  position: relative;
+  z-index: 1; /* keep container above background GIFs */
+}
+
+h1 {
+  color: white;
+  font-size: 2.5rem;
+  text-shadow: 0px 0px 15px red;
+}
+
+.text {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 15px;
+  text-shadow: 0px 0px 10px black;
+}
+
+/* Staggered GIFs outside the container */
+.gif-top-left,
+.gif-top-right,
+.gif-bottom-right,
+.gif-bottom-left {
+  position: absolute;
+  width: 100px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.4);
+  transition: 0.3s;
+  z-index: 0; /* behind container */
+}
+
+.gif-top-left {
+  top: 50px;
+  left: 50px;
+}
+
+.gif-top-right {
+  top: 50px;
+  right: 50px;
+}
+
+.gif-bottom-right {
+  bottom: 50px;
+  right: 50px;
+}
+
+.gif-bottom-left {
+  bottom: 50px;
+  left: 50px; /* now positioned at bottom-left */
+}
+
+.gif-top-left:hover,
+.gif-top-right:hover,
+.gif-bottom-right:hover,
+.gif-bottom-left:hover {
+  transform: scale(1.1);
+}
+
+/* Centered GIF inside container below text */
+.gif-center {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.gif-center img {
+  width: 120px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.4);
+  transition: 0.3s;
+}
+
+.gif-center img:hover {
+  transform: scale(1.05);
+}
+
+/* Back button */
+.back {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 25px;
+  text-decoration: none;
+  background: white;
+  color: black;
+  border-radius: 15px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.back:hover {
+  background: black;
+  color: white;
+}
