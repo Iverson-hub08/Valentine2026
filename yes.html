@@ -17,53 +17,66 @@
     </div>
   
     <div class="hearts-container"></div>
+    <div class="photos-container"></div>
 
   <div class="container">
     <h1>💖 YAYYY!! 💖</h1>
-    <p>Yay another valentine year with ashlie again 💖 </p>
+    <p>Yay, another Valentine year with Ashlie again!💖 </p>
 
     <!-- Replace rose with catflower -->
     <div class="catflower">
       <img src="Catflower.gif" alt="cat holding flower">
     </div>
-
-    <p class="msg">I LOVE YOU first of all at thank you sa lahat ng ginawa mo sakin. 💕</p>
-    <p class="msg">I promise na ikaw lang ang aking mamahalin. I love you so much</p>
+    <h1>I LOVE YOU!!</h1>
+    <p class="msg">Every day with you is my favorite. Let's make a million more of them.💖 </p>
+    <p class="msg">Happy Valentine's Day. I love you so much!</p>
 
     <a href="index.html" class="back">⬅ Back</a>
   </div>
 <script>
-const heartsContainer = document.querySelector('.hearts-container');
+const heartsContainer = document.querySelector(".hearts-container");
+const photosContainer = document.querySelector(".photos-container");
 
+const photos = [
+  "ph1.png",
+  "ph2.png",
+  "ph3.png",
+  "ph4.png"
+];
+
+// Create hearts
 function createHeart() {
-  const heart = document.createElement('div');
-  heart.classList.add('heart');
-  heart.innerText = '❤️';
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText = "❤️";
 
-  // Random position
-  heart.style.left = Math.random() * window.innerWidth + 'px';
-  heart.style.top = window.innerHeight + 'px';
-
-  // Random size
-  heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.top = window.innerHeight + "px";
+  heart.style.fontSize = (20 + Math.random() * 25) + "px";
 
   heartsContainer.appendChild(heart);
 
-  // Remove heart after animation
-  heart.addEventListener('animationend', () => heart.remove());
+  heart.addEventListener("animationend", () => heart.remove());
 }
 
-// Create a heart every 300ms
-const heartInterval = setInterval(createHeart, 300);
+// Create floating photos
+function createPhoto() {
+  const img = document.createElement("img");
+  img.classList.add("floating-photo");
 
-// Optional: Stop hearts when clicking "Yes"
-const yesButton = document.querySelector('.yes-button'); // if you have a Yes button
-if (yesButton) {
-  yesButton.addEventListener('click', () => {
-    clearInterval(heartInterval);
-    document.querySelectorAll('.heart').forEach(h => h.remove());
-  });
+  img.src = photos[Math.floor(Math.random() * photos.length)];
+
+  img.style.left = Math.random() * window.innerWidth + "px";
+  img.style.top = window.innerHeight + "px";
+
+  photosContainer.appendChild(img);
+
+  img.addEventListener("animationend", () => img.remove());
 }
+
+// Spawn hearts + photos
+setInterval(createHeart, 250);
+setInterval(createPhoto, 1500);
 </script>
 </body>
 </html>
